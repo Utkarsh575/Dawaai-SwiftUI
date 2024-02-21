@@ -17,6 +17,7 @@
 		7FB9860C2B85F17300FE9349 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB9860B2B85F17300FE9349 /* HomeView.swift */; };
 		7FB9860E2B85F66C00FE9349 /* MedicineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB9860D2B85F66C00FE9349 /* MedicineInfo.swift */; };
 		7FB986122B86106300FE9349 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB986112B86106300FE9349 /* ProfileView.swift */; };
+		7FB986142B863AC300FE9349 /* AddMedicineForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB986132B863AC300FE9349 /* AddMedicineForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		7FB9860B2B85F17300FE9349 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7FB9860D2B85F66C00FE9349 /* MedicineInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineInfo.swift; sourceTree = "<group>"; };
 		7FB986112B86106300FE9349 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7FB986132B863AC300FE9349 /* AddMedicineForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicineForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				7F2F3C352B4E9B4F00D94988 /* ContentView.swift */,
 				7FB9860B2B85F17300FE9349 /* HomeView.swift */,
 				7FB986112B86106300FE9349 /* ProfileView.swift */,
+				7FB986132B863AC300FE9349 /* AddMedicineForm.swift */,
 				7FB986092B85F0E700FE9349 /* AddMedicineView.swift */,
 				7FB986072B85F0C300FE9349 /* FamilyLogView.swift */,
 				7FB986052B85F07900FE9349 /* HistoryView.swift */,
@@ -161,6 +164,7 @@
 				7FB986082B85F0C300FE9349 /* FamilyLogView.swift in Sources */,
 				7FB9860C2B85F17300FE9349 /* HomeView.swift in Sources */,
 				7FB986062B85F07900FE9349 /* HistoryView.swift in Sources */,
+				7FB986142B863AC300FE9349 /* AddMedicineForm.swift in Sources */,
 				7F2F3C342B4E9B4F00D94988 /* DawaaiSwiftUiApp.swift in Sources */,
 				7FB9860E2B85F66C00FE9349 /* MedicineInfo.swift in Sources */,
 			);

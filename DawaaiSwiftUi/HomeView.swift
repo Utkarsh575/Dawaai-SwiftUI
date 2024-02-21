@@ -39,8 +39,7 @@ struct HomeView: View {
                                 Text("1 of 3 completed Today").font(.system(size: 15,weight: .light)).frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ ,alignment : .leading).padding(.leading, 15);
                             }
                             Image("heroImage").padding(.horizontal ,20)
-                        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ , alignment:.leading).background(Color("heroColor")).border(Color.green , width: 4 ).cornerRadius(25.0).shadow(radius: 3)
-                            .foregroundColor(.black)
+                        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ , alignment:.leading).background(Color("heroColor")).cornerRadius(25.0).shadow(color: .green,radius: 2).foregroundColor(.black)
                     }
                     
                     
@@ -128,21 +127,25 @@ struct PlanpickerView : View {
     @State private var midIsSelected = false
     @State private var rightIsSelected = false
     
+    @State private var selectedCard : Int = 4;
+        
     let today = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
     let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
     let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
 
-        
+    
     var body: some View {
     
         HStack{
+            
             VStack{
                 Text("Mon").bold().padding(.top,10)
                 Text("\(getPreviousDateDay(date:Date()))").font(.system(size: 45))
                 Text("3 Meds").padding(.bottom,10)
                 
-            }.frame(maxWidth: 80 , alignment:.center).background(Color.white).cornerRadius(15).padding(.bottom,5).shadow( radius: 2).onTapGesture(perform: {
+            }.frame(maxWidth: 80 , alignment:.center).background(selectedCard == 0 || selectedDate == yesterday ? Color.pickerSelected : Color.white).cornerRadius(15).padding(.bottom,5).shadow( radius: 2).onTapGesture(perform: {
                 selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+                selectedCard = 0;
             })
 
             
@@ -151,8 +154,10 @@ struct PlanpickerView : View {
                 Text("\(String(dayToday))").font(.system(size: 45))
                 Text("5 meds").padding(.bottom,10)
                 
-            }.frame(maxWidth: 80 , alignment:.center).background(Color("pickerSelected")).cornerRadius(15).shadow(radius: 3).padding(.bottom,5).padding(.horizontal ,30).foregroundColor(midIsSelected ? Color.white : Color.black).shadow(color: .pickerSelected, radius: 2).onTapGesture(perform: {
+            }.frame(maxWidth: 80 , alignment:.center).background(selectedCard == 1 ? Color.pickerSelected : Color.white).cornerRadius(15).shadow(radius: 3).padding(.bottom,5).padding(.horizontal ,30).foregroundColor(midIsSelected ? Color.white : Color.black).shadow(color: .pickerSelected, radius: 2).onTapGesture(perform: {
                 selectedDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
+                selectedCard = 1;
+
             })
 
             
@@ -161,12 +166,40 @@ struct PlanpickerView : View {
                 Text("\(getNextDateDay(date: Date()))").font(.system(size: 45))
                 Text("3 meds").padding(.bottom,10)
                 
-            }.frame(maxWidth: 80 , alignment:.center).cornerRadius(15).padding(.bottom,5).shadow( radius: 2).onTapGesture(perform: {
+            }.frame(maxWidth: 80 , alignment:.center).background(selectedCard == 2 ? Color.pickerSelected : Color.white).cornerRadius(15).padding(.bottom,5).shadow( radius: 2).onTapGesture(perform: {
                 selectedDate = Calendar.current.date(byAdding: .day, value: +1, to: Date())!
-            }).background( )
+                selectedCard = 2;
+                
+                
+            })
 
 
-        }
+        }.onAppear(perform: {
+            if( !(selectedDate == today) || !(selectedDate == yesterday) || !(selectedDate == tomorrow)){
+                selectedCard = 3;
+            }else{
+                selectedCard = 1;
+            }
+
+//            if(selectedDate == today){
+//                midIsSelected = true;
+//            }else{
+//                midIsSelected = false;
+//            }
+//            if(selectedDate == tomorrow){
+//                rightIsSelected = true;
+//            }else{
+//                rightIsSelected = false;
+//            }
+//            if(selectedDate == yesterday){
+//                leftIsSelected = true;
+//            }else{
+//                leftIsSelected = false;
+//            }
+            
+            
+            }
+        )
     }
 }
 
