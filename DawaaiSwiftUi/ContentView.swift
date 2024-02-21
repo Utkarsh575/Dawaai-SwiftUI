@@ -10,8 +10,13 @@ import SwiftUI
 
 
 struct ContentView : View {
+//    init() {
+//        UITabBar.appearance().backgroundColor = UIColor(Color.pickerSelected)
+//        }
+
     var body: some View {
         TabView{
+            
             HomeView().tabItem { Label("Home", systemImage: "house")
             }
             AddMedicineView().tabItem {                     Label("Meds", systemImage: "pill")
@@ -21,8 +26,9 @@ struct ContentView : View {
             HistoryView().tabItem {                     Label("History", systemImage: "calendar.badge.clock")
             }
 
-        }.accentColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-        
+        }.accentColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/).toolbarBackground(
+            Color("bgColor"),
+            for: .tabBar)
     }
 }
 

@@ -30,6 +30,7 @@ struct AddMedicineView : View {
                     VStack{
                         HStack{
                             Text("My Medicine").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold()
+                            Spacer()
                             NavigationLink{
                                 AddMedicineForm()
                             } label: {

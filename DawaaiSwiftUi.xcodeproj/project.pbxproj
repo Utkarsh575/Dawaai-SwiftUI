@@ -19,6 +19,7 @@
 		7FB9860E2B85F66C00FE9349 /* MedicineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB9860D2B85F66C00FE9349 /* MedicineInfo.swift */; };
 		7FB986122B86106300FE9349 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB986112B86106300FE9349 /* ProfileView.swift */; };
 		7FB986142B863AC300FE9349 /* AddMedicineForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB986132B863AC300FE9349 /* AddMedicineForm.swift */; };
+		7FB986162B86958500FE9349 /* MemberHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB986152B86958500FE9349 /* MemberHistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		7FB9860D2B85F66C00FE9349 /* MedicineInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineInfo.swift; sourceTree = "<group>"; };
 		7FB986112B86106300FE9349 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7FB986132B863AC300FE9349 /* AddMedicineForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicineForm.swift; sourceTree = "<group>"; };
+		7FB986152B86958500FE9349 /* MemberHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberHistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				7FB986132B863AC300FE9349 /* AddMedicineForm.swift */,
 				7FB986092B85F0E700FE9349 /* AddMedicineView.swift */,
 				7FB986072B85F0C300FE9349 /* FamilyLogView.swift */,
+				7FB986152B86958500FE9349 /* MemberHistoryView.swift */,
 				1F5D407C2B86688B00E137DF /* SplashScreenView.swift */,
 				7FB986052B85F07900FE9349 /* HistoryView.swift */,
 				7F2F3C372B4E9B5000D94988 /* Assets.xcassets */,
@@ -171,6 +174,7 @@
 				7FB986142B863AC300FE9349 /* AddMedicineForm.swift in Sources */,
 				7F2F3C342B4E9B4F00D94988 /* DawaaiSwiftUiApp.swift in Sources */,
 				7FB9860E2B85F66C00FE9349 /* MedicineInfo.swift in Sources */,
+				7FB986162B86958500FE9349 /* MemberHistoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

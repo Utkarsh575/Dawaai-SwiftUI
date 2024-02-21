@@ -35,8 +35,8 @@ struct HomeView: View {
                     } label: {
                         HStack{
                             VStack{
-                                Text("Hello Ezio").font(.system(size: 30,weight: .semibold)).frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ ,alignment : .leading).padding(.leading , 10);
-                                Text("1 of 3 completed Today").font(.system(size: 15,weight: .light)).frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ ,alignment : .leading).padding(.leading, 15);
+                                Text("Hello Ezio").font(.system(size: 30,weight: .semibold)).frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ ,alignment : .center).padding(.leading , 10);
+                                Text("1 of 3 completed Today").font(.system(size: 15,weight: .light)).frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ ,alignment : .center).padding(.leading, 15);
                             }
                             Image("heroImage").padding(.horizontal ,20)
                         }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ , alignment:.leading).background(Color("heroColor")).cornerRadius(25.0).shadow(color: .green,radius: 2).foregroundColor(.black)
