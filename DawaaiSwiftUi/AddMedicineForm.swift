@@ -11,7 +11,7 @@ struct AddMedicineForm: View {
     var body: some View {
         ScrollView{
             VStack{
-                Text("My Medicine").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold().padding(.leading,20)
+                Text("Add a plan").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold().padding(.leading,20)
                 Text("Pill Name").frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment:.leading)
             }.frame(maxWidth: .infinity , maxHeight: .infinity , alignment: .leading).padding(.leading)
         }.background(Color("bgColor"))
