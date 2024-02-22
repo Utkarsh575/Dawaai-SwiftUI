@@ -12,18 +12,14 @@ struct HomeView: View {
     @State private var showingMedicineInfo = false
     @State private var selectedMedicine : Medicine?
 
-    var medicineCtas : [Medicine] = [
-        Medicine(id: 1, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill1", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708529400), dosageType: "Before eating", dosage: 3 , quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
-        Medicine(id: 2, name: "Amodep AT", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill2", taken: 1, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708599400), dosageType: "Before eating" ,dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
-        Medicine(id: 3, name: "Amyron", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
-        Medicine(id: 4, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
-        Medicine(id: 5, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000))
-
-    ]
-    
+    public var medicineCtas : [Medicine]
     @State public var selectedDate = Date()
 
     @State private var searchText = ""
+    
+//    var filteredMedicines = medicineCtas.filter{ medicine in  medicine.expiryDate > Date()
+//        
+//    }
 
     var body: some View {
         NavigationStack{
@@ -205,22 +201,6 @@ struct PlanpickerView : View {
 
 // DATA MODELS
 
-struct Medicine : Decodable , Identifiable {
-    var id : Int
-    var name : String
-    var type : String
-    var strength : String
-    var strengthUnit : String
-    var frequency : String
-    var Image : String
-    var taken : Int
-    var toBeTake : Int
-    var nextDoseTime : Date
-    var dosageType : String
-    var dosage : Int
-    var quantity : Int
-    var expiryDate : Date
-}
 
 
 #Preview {

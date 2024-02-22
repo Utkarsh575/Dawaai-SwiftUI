@@ -10,18 +10,21 @@ import Foundation
 
 struct AddMedicineView : View {
     
-    var medicineCards : [Medicine] = [
-        Medicine(id: 1, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill1", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708529400), dosageType: "Before eating", dosage: 3 , quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
-        Medicine(id: 2, name: "Amodep AT", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill2", taken: 1, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708599400), dosageType: "Before eating" ,dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
-        Medicine(id: 3, name: "Amyron", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
-        Medicine(id: 4, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
-        Medicine(id: 5, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000))
-
-    ]
+    @Binding public var medicineCards : [Medicine] ;
+    
+//    = [
+//        Medicine(id: 1, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill1", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708529400), dosageType: "Before eating", dosage: 3 , quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
+//        Medicine(id: 2, name: "Amodep AT", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill2", taken: 1, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708599400), dosageType: "Before eating" ,dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
+//        Medicine(id: 3, name: "Amyron", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
+//        Medicine(id: 4, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
+//        Medicine(id: 5, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill3", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708527400), dosageType: "Before eating",dosage: 3, quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000))
+//]
 
     
     @State private var selectedCard : Medicine?
     @State private var showingMedicineInfo : Bool = false
+    @State private var showingAddMedicineForm : Bool = false
+//    @State public var newMedicine : Medicine
 
     var body: some View {
 
@@ -32,7 +35,7 @@ struct AddMedicineView : View {
                             Text("My Medicine").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold()
                             Spacer()
                             NavigationLink{
-                                AddMedicineForm()
+                                AddMedicineForm(medicineCards: $medicineCards)
                             } label: {
                                 Image(systemName: "plus")
                                     .padding()
@@ -42,7 +45,6 @@ struct AddMedicineView : View {
                         }
                         
                         
-                    
                     ForEach(medicineCards) { med in
                         MedicineCard(medicine: med).onTapGesture {
                             selectedCard = med
@@ -92,6 +94,6 @@ struct MedicineCard : View {
     }
 }
 
-#Preview {
-    AddMedicineView()
-}
+//#Preview {
+//    AddMedicineView()
+//}
