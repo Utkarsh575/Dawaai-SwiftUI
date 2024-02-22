@@ -36,7 +36,18 @@ struct FamilyLogView : View {
     var body: some View {
         NavigationStack{
             ScrollView{
-                Text("Family Log").font(.system(size: 25 , weight: .bold))
+                HStack{
+                    Text("Family Log").font(.system(size: 25 , weight: .bold)).padding(20)
+                    Spacer()
+                    NavigationLink{
+                        AddFamilyForm()
+                    } label: {
+                        Image(systemName: "plus")
+                            .padding()
+                    }
+                    
+                }
+               
                 LazyVGrid(columns: adaptiveColumns,spacing: 20){
                     ForEach(familyMembers){member in
                         NavigationLink{
@@ -66,7 +77,7 @@ struct FamilyLogView : View {
                                         
                                         
                                         
-                                        Text(member.name).padding(.horizontal , 10)
+                                        Text(member.name).padding(.horizontal , 10).foregroundColor(.black)
                                         Button(action: {
                                             guard let phoneNum = URL(string: "tel://1-123-456-7890") else { return }
                                             UIApplication.shared.open(phoneNum)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F5D407D2B86688B00E137DF /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D407C2B86688B00E137DF /* SplashScreenView.swift */; };
+		1F5D407F2B86F71C00E137DF /* AddFamilyForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D407E2B86F71C00E137DF /* AddFamilyForm.swift */; };
 		7F2F3C342B4E9B4F00D94988 /* DawaaiSwiftUiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2F3C332B4E9B4F00D94988 /* DawaaiSwiftUiApp.swift */; };
 		7F2F3C362B4E9B4F00D94988 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2F3C352B4E9B4F00D94988 /* ContentView.swift */; };
 		7F2F3C382B4E9B5000D94988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F2F3C372B4E9B5000D94988 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		1F5D407C2B86688B00E137DF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		1F5D407E2B86F71C00E137DF /* AddFamilyForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFamilyForm.swift; sourceTree = "<group>"; };
 		7F2F3C302B4E9B4F00D94988 /* DawaaiSwiftUi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DawaaiSwiftUi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F2F3C332B4E9B4F00D94988 /* DawaaiSwiftUiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawaaiSwiftUiApp.swift; sourceTree = "<group>"; };
 		7F2F3C352B4E9B4F00D94988 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				7FB986132B863AC300FE9349 /* AddMedicineForm.swift */,
 				7FB986092B85F0E700FE9349 /* AddMedicineView.swift */,
 				7FB986072B85F0C300FE9349 /* FamilyLogView.swift */,
+				1F5D407E2B86F71C00E137DF /* AddFamilyForm.swift */,
 				7FB986152B86958500FE9349 /* MemberHistoryView.swift */,
 				1F5D407C2B86688B00E137DF /* SplashScreenView.swift */,
 				7FB986052B85F07900FE9349 /* HistoryView.swift */,
@@ -169,6 +172,7 @@
 				1F5D407D2B86688B00E137DF /* SplashScreenView.swift in Sources */,
 				7FB9860A2B85F0E700FE9349 /* AddMedicineView.swift in Sources */,
 				7FB986082B85F0C300FE9349 /* FamilyLogView.swift in Sources */,
+				1F5D407F2B86F71C00E137DF /* AddFamilyForm.swift in Sources */,
 				7FB9860C2B85F17300FE9349 /* HomeView.swift in Sources */,
 				7FB986062B85F07900FE9349 /* HistoryView.swift in Sources */,
 				7FB986142B863AC300FE9349 /* AddMedicineForm.swift in Sources */,
