@@ -18,7 +18,7 @@ struct SplashScreenView: View {
     // Customise your SplashScreen here
     var body: some View {
         if isActive {
-            ContentView()
+            ContentView().background(Color("bgColor"))
         } else {
             VStack {
                 VStack {

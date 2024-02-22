@@ -53,5 +53,5 @@ struct MemberHistoryView: View {
 }
 
 //#Preview {
-//    MemberHistoryView()
+//    MemberHistoryView(currMember: <#FamilyMember#>)
 //}
