@@ -10,6 +10,9 @@ import SwiftUI
 struct ProfileView: View {
     @State private var image: Image?
     @State private var isImagePickerPresented: Bool = false
+    @State private var showModal = false
+    @State var showAlert: Bool = false
+    let uniqueCode = "vhTCH85g"
     var body: some View {
         NavigationStack{
             ScrollView{
@@ -50,19 +53,45 @@ struct ProfileView: View {
                     
                     
                         HStack{
-                            Text("Unique Code").font(.system(size: 20,weight: .medium)).frame(maxWidth: .infinity ,alignment : .top).padding();
-                        
+                            Button(action: {
+                                showAlert.toggle()
+                                    // action for "Unique Code" button
+        
+                                
+                            }) {
+                                Text("Unique Code").font(.system(size: 20,weight: .medium)).frame(maxWidth: .infinity ,alignment : .top).padding();
+                            }.alert(isPresented: $showAlert, content: {
+                                getAlert()
+                            })
                         }.background(Color.white).frame(maxWidth: .infinity , maxHeight:200).cornerRadius(10).foregroundColor(.black).padding(.top, 20)
                     
                     
-                        HStack{
-                            Text("Medicine Provider").font(.system(size: 20,weight: .medium)).frame(maxWidth: .infinity ,alignment : .top).padding();
-                        
-                        }.background(Color.white).frame(maxWidth: .infinity , maxHeight:200).cornerRadius(10).foregroundColor(.black).padding(EdgeInsets())
+                    
+                    HStack {
+                        Button(action: {
+                                        self.showModal = true
+                                    }) {
+                                        Text("Medicine Provider")
+                                            .font(.system(size: 20, weight: .medium))
+                                            .frame(maxWidth: .infinity, alignment: .top)
+                                            .padding()
+                                    }
+                    }
+                    .background(Color.white)
+                    .frame(maxWidth: .infinity, maxHeight:200)
+                    .cornerRadius(10)
+                    .foregroundColor(.black)
+                    .padding(EdgeInsets())
+                    .sheet(isPresented: $showModal) {
+                        MedicineProviderView(isPresented: self.$showModal)
+                    }
                     
                     HStack{
-                        Text("Log Out").font(.system(size: 20,weight: .medium)).frame(maxWidth: .infinity ,alignment : .bottom).padding().foregroundColor(.red);
-                    
+                        Button(action: {
+                                // action for "Logout" button
+                        }) {
+                            Text("Log Out").font(.system(size: 20,weight: .medium)).frame(maxWidth: .infinity ,alignment : .bottom).padding().foregroundColor(.red);
+                        }
                     }.background(Color.white).frame(maxWidth: .infinity , maxHeight:200).cornerRadius(10).foregroundColor(.black).padding(.top, 20).padding(.top,275)
                 
                     
@@ -99,6 +128,15 @@ struct ProfileView: View {
         }
         .frame(width: 125, height: 125)
 
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text("Your Unique Code"), message: Text(uniqueCode).font(.title), primaryButton: .destructive(Text("Done"), action: {
+            print("Done")
+        }), secondaryButton: .cancel(Text("Copy"), action: {
+            UIPasteboard.general.string = uniqueCode // Copy the code to clipboard
+            print("Copied to clipboard")
+        }))
     }
 }
 
