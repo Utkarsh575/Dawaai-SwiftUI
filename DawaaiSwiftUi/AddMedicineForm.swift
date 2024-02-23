@@ -10,7 +10,7 @@ import SwiftUI
 struct AddMedicineForm: View {
     @Binding public var medicineCards : [Medicine]
     
-    @State private var medicine : Medicine = Medicine(id: Int.random(in: 1...100) , name: "", type: "", strength: "", strengthUnit: "", Image: "pill1", taken: 0, toBeTake: 3, nextDoseTime: Date(), dosageType: "", dosage: 0, quantity: 0 , expiryDate: Date() , startDate: Date() , breakfast: 0 , lunch: 0 , dinner: 0) ;
+    @State private var medicine : Medicine = Medicine(id: Int.random(in: 1...100) , name: "", type: "", strength: "", strengthUnit: "", Image: "pill1", taken: 0, toBeTake: 3, nextDoseTime: Date(), dosageType: "", dosage: 0, quantity: 0 , expiryDate: Date() , startDate: Date(), remindForReorder: false , breakfast: false , lunch: false , dinner: false) ;
     
     @State private var showingDatePicker = false
     @State private var showingDatePicker2 = false
@@ -108,9 +108,9 @@ struct AddMedicineForm: View {
                         Text("Quantity")
                         Stepper("\(String(medicine.quantity))", value: $medicine.quantity )
                     }
-                    
+                    Toggle("Redmind for reorder?" , isOn: $medicine.remindForReorder )
                     HStack{
-                        Text("Dosage")
+                        Text("Dosage per day")
                         Stepper("\(String(medicine.dosage))", value: $medicine.dosage )
                     }
                     
@@ -147,6 +147,10 @@ struct AddMedicineForm: View {
                 
                 Section(header: Text("Dosage Instructions")) {
                     TextField("Dosage Type", text: $medicine.dosageType).foregroundColor(.black)
+                    Toggle("Breakfast" , isOn: $medicine.breakfast)
+                    Toggle("Lunch" , isOn: $medicine.lunch)
+                    Toggle("Dinner" , isOn: $medicine.dinner)
+
                 }
                 
                 Button("Save") {
