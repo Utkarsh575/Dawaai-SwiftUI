@@ -7,29 +7,97 @@
 
 import SwiftUI
 
-struct AlertView: View {
+struct CustomAlertView: View {
+  var title: String?
+  var message: String?
+  var primaryButtonLabel: String
+  var primaryButtonAction: () -> Void
+  var secondaryButtonLabel: String?
+  var secondaryButtonAction: (() -> Void)?
+  var image: Image?
+
+  var body: some View {
+    VStack {
+      if let image = image {
+        image
+          .resizable()
+          .scaledToFit()
+          .frame(width: 200, height: 200)
+      } else if let title = title {
+        Text(title)
+          .font(.headline)
+          .multilineTextAlignment(.center)
+          .padding(.bottom)
+      }
+
+      if let message = message {
+        Text(message)
+          .font(.title3)
+          .multilineTextAlignment(.center)
+          .padding()
+      }
+
     
-    @State var showAlert: Bool = false
-    
-    var body: some View {
-        Button("click here"){
-            showAlert.toggle()
-            
-        }.alert(isPresented: $showAlert, content: {
-            getAlert()
+      if let title = title {
+        Text(title)
+          .font(.title).bold()
+          .multilineTextAlignment(.center)
+      }
+
+      HStack(spacing: 16) {
+        Button(action: {
+          self.primaryButtonAction()
+        }, label: {
+          Text(primaryButtonLabel)
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.blue)
+            .cornerRadius(12)
         })
-        
+        if let secondaryButtonLabel = secondaryButtonLabel {
+          Button(action: {
+            self.secondaryButtonAction?()
+          }, label: {
+            Text(secondaryButtonLabel)
+              .font(.headline)
+              .foregroundColor(.blue)
+              .padding()
+              .frame(maxWidth: .infinity)
+              .background(Color.white)
+              .cornerRadius(12)
+              .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                  .stroke(Color.blue, lineWidth: 2)
+              )
+          })
+        }
+      }
     }
+    .padding()
+    .background(Color("bgColor"))
+    .cornerRadius(10)
+    .shadow(radius: 20)
+  }
 }
 
-func getAlert() -> Alert{
-    return Alert(title: Text("Time take your medicine ! 🚨"), message: Text("DOLO 650"), primaryButton: .destructive(Text("Done"), action: {
-        print("done")
-    }), secondaryButton: .cancel(Text("Snooze")))
-}
-
-struct AlertView_Previews: PreviewProvider {
-    static var previews: some View {
-        AlertView()
+struct CustomAlertView_Previews: PreviewProvider {
+  static var previews: some View {
+    Group {
+       
+      CustomAlertView(
+        title: "DOLO 650",
+        message: "🚨DAWAAI TIME🚨",
+        primaryButtonLabel: "DONE",
+        primaryButtonAction: {},
+        secondaryButtonLabel: "SNOOZE",
+        secondaryButtonAction: nil,
+        image: Image("dolo650")
+      )
+      .previewLayout(.sizeThatFits)
+      .padding()
+       
     }
+  }
 }
