@@ -5,12 +5,7 @@
 //  Created by user1 on 21/02/24.
 //
 
-import SwiftUI
-import Foundation
 
-struct AddMedicineView : View {
-    
-    @Binding public var medicineCards : [Medicine] ;
     
 //    = [
 //        Medicine(id: 1, name: "Dolo 650", type: "pill", strength: "650", strengthUnit: "mg", frequency: "daily", Image: "pill1", taken: 2, toBeTake: 3, nextDoseTime: Date(timeIntervalSince1970: 1708529400), dosageType: "Before eating", dosage: 3 , quantity: 10 , expiryDate: Date(timeIntervalSince1970: 1711305000)),
@@ -21,51 +16,51 @@ struct AddMedicineView : View {
 //]
 
     
+import SwiftUI
+import Foundation
+
+struct AddMedicineView : View {
+    
+    @Binding public var medicineCards : [Medicine]
     @State private var selectedCard : Medicine?
     @State private var showingMedicineInfo : Bool = false
     @State private var showingAddMedicineForm : Bool = false
-//    @State public var newMedicine : Medicine
 
     var body: some View {
-
-        NavigationStack{
-            ScrollView{
-                    VStack{
-                        HStack{
-                            Text("My Medicine").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold()
-                            Spacer()
-                            NavigationLink{
-                                AddMedicineForm(medicineCards: $medicineCards)
-                            } label: {
-                                Image(systemName: "plus")
-                                    .padding()
-                            }
-                            
-                            
-                        }
-                        
-                        
-                    ForEach(medicineCards) { med in
-                        MedicineCard(medicine: med).onTapGesture {
-                            selectedCard = med
-                            showingMedicineInfo = true
-                        }
-                        
+        ScrollView{
+            VStack{
+                HStack{
+                    Text("My Medicine").font(.title).bold()
+                    Spacer()
+                    Button(action: {
+                        showingAddMedicineForm = true
+                    }) {
+                        Image(systemName: "plus")
+                            .padding()
                     }
-
-                }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ , maxHeight: .infinity , alignment: .center).padding(10).padding(.horizontal,10)
-                
-
-            }.background(Color("bgColor")).sheet(isPresented: $showingMedicineInfo, content: {
-                if let medicine = selectedCard {
-                    MedicineInfo(medicine: medicine)
-                        .presentationDetents([.fraction(1.0)]) // Adjustable modal height
+                    .sheet(isPresented: $showingAddMedicineForm) {
+                        AddMedicineForm(medicineCards: $medicineCards)
+                    }
                 }
-            })
+                
+                ForEach(medicineCards) { med in
+                    MedicineCard(medicine: med).onTapGesture {
+                        selectedCard = med
+                        showingMedicineInfo = true
+                    }
+                }
+            }.frame(maxWidth: .infinity , maxHeight: .infinity , alignment: .center).padding(10).padding(.horizontal,10)
         }
-
+        .background(Color("bgColor"))
+        .sheet(isPresented: $showingMedicineInfo, content: {
+            if let medicine = selectedCard {
+                MedicineInfo(medicine: medicine)
+                    .presentationDetents([.fraction(1.0)]) // Adjustable modal height
+            }
+        })
     }
 }
+
 
 struct MedicineCard : View {
     let medicine : Medicine;

@@ -40,7 +40,7 @@ struct AddFamilyForm: View {
                 .padding(.horizontal, 30)
                 .padding(.vertical, 10)
                 .foregroundColor(.white)
-                .background(Color.green)
+                .background(Color("boColor"))
                 .cornerRadius(8)
                 .font(.system(size: 20, weight: .bold))
                 .padding(.leading) // Add leading padding to entire VStack

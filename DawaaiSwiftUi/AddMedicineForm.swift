@@ -14,75 +14,15 @@ struct AddMedicineForm: View {
     
     @State private var showingDatePicker = false
     @State private var showingDatePicker2 = false
+    
+    @State private var isShowingImagePicker = false
+    @State private var inputImage: UIImage?
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     
     var body: some View {
         
-        
-        //            Form
-        //            {
-        //                Section(header: Text("Medicine Details").bold()){
-        //                                    TextField("Name", text: $medicine.name)
-        //                                                                        .foregroundColor(.black)
-        //
-        //                                    TextField("Type", text: $medicine.type)
-        //                                                                        .foregroundColor(.black)
-        //
-        //                                    TextField("Strength", text: $medicine.strength)
-        //                                        .keyboardType(.numberPad)
-        //                                        .foregroundColor(.black)
-        //
-        //                                    TextField("Strength Unit", text: $medicine.strengthUnit)
-        //                                                                        .foregroundColor(.black)
-        //
-        //                                    TextField("Frequency", text: $medicine.frequency)
-        //                                                                        .foregroundColor(.black)
-        //
-        //                                    HStack {
-        //                                        Text("Expiry Date")
-        //                                        Spacer()
-        //                                        Button("Select") {
-        //                                            showingDatePicker.toggle()
-        //                                        }
-        //
-        //                                    }
-        //
-        //                                    if showingDatePicker {
-        //                                        DatePicker("", selection: $medicine.expiryDate, displayedComponents: .date)
-        //                                            .foregroundColor(.black)
-        //                                                                        }
-        //                                }
-        //
-        //                                Section(header: Text("Dosage")) {
-        //                                    TextField("Dosage Type", text: $medicine.dosageType)
-        //        //                            TextField("Dosage per Intake", text: $medicine.dosage.description)
-        //        //                                .keyboardType(.numberPad)
-        //                                }
-        //
-        //                                Button("Save") {
-        //                                    // Save your medicine data here
-        //                                    print("Medicine saved: \(medicine)")
-        //                                    medicineCards.append(medicine)
-        //
-        //                                }
-        //                            }
-        //                            .navigationTitle("Add Medicine")
-        //                        }
-        //
-        //
-        //        //        private func isValidName(_ name: String) -> Bool {
-        //        //            // Implement your validation logic here
-        //        //            return name.trimmingCharacters(in: .whitespacesAndNewlines).isNotEmpty
-        //        //        }
-        //        //
-        //        //        // ... other validation functions (type, strength, ...)
-        //        //
-        //        //        private var allFieldsValid: Bool {
-        //        //            return nameValid && typeValid && strengthValid && strengthUnitValid && frequencyValid && quantityValid && expiryDateValid
-        //        //        }
-        //
-        //
-        //            }
         
         NavigationStack{
             
@@ -153,14 +93,26 @@ struct AddMedicineForm: View {
 
                 }
                 
+                Button("Open Camera") {
+                                    self.isShowingImagePicker = true
+                                }
+                                .sheet(isPresented: $isShowingImagePicker) {
+                                    ImagePicker(image: self.$inputImage)
+                                }
+                
                 Button("Save") {
-                    print("Medicine saved: \(medicine)")
-                    medicineCards.append(medicine)
-                    
-                }
+                            print("Medicine saved: \(medicine)")
+                            medicineCards.append(medicine)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
 
             })
         }
+        
+//        func loadImage() {
+//                guard let inputImage = inputImage else { return }
+//
+//            }
         
     }
     
@@ -168,4 +120,42 @@ struct AddMedicineForm: View {
     
     
     
+}
+
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+    @Environment(\.presentationMode) var presentationMode
+
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        let parent: ImagePicker
+
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let uiImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                parent.image = uiImage
+            }
+
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                picker.sourceType = .camera
+            }
+            picker.delegate = context.coordinator
+            return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+
+    }
 }

@@ -26,6 +26,7 @@ struct HomeView: View {
             ScrollView{
                 
                 VStack{
+                    Text("DAWAAI").font(.title).bold().padding(.trailing,225)
                     NavigationLink{
                         ProfileView()
                     } label: {
@@ -42,8 +43,8 @@ struct HomeView: View {
                     //Hstack end
                 }.frame(maxWidth: .infinity , maxHeight: .infinity , alignment: .center).padding(10).padding(.horizontal,10)
                 
-                Text("Your Meds for today").font(.system(size: 25 ,weight: .bold)).padding(.trailing, 158)
-                DatePicker("", selection: $selectedDate, displayedComponents: .date).padding(.top ,-42).padding(.trailing,20)
+                Text("Your Meds for today").font(.system(size: 25 ,weight: .bold)).padding(.trailing, 140)
+                DatePicker("", selection: $selectedDate, displayedComponents: .date).padding(.top ,-46).padding(.trailing,17)
                 
                 
                 PlanpickerView(selectedDate : $selectedDate)
