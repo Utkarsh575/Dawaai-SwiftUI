@@ -15,31 +15,36 @@ struct SplashScreenView: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     
-    // Customise your SplashScreen here
+    
     var body: some View {
         if isActive {
             ContentView()
         } else {
-            VStack {
+            ZStack{
+                Color("bgColor")
+                    .ignoresSafeArea()
                 VStack {
-                    Text("DAWAAI")
-                        .font(Font.custom("Baskerville-Bold", size: 66))
-                        .foregroundColor(.black.opacity(0.80))
-                    Text("Meds on time making your health shine")
-                    Image("splashScreen")
-                        .font(.system(size: 80))
-                        .foregroundColor(.red)
-                   
-                }
-                .scaleEffect(size)
-                .opacity(opacity)
-                .onAppear {
-                    withAnimation(.easeIn(duration: 1.2)) {
-                        self.size = 0.9
-                        self.opacity = 1.00
+                    VStack {
+                        Text("DAWAAI")
+                            .font(Font.custom("Baskerville-Bold", size: 66))
+                            .foregroundColor(.black.opacity(0.80))
+                        Text("Meds on time making your health shine")
+                        Image("splashScreen")
+                            .font(.system(size: 80))
+                            .foregroundColor(.red)
+                       
+                    }
+                    .scaleEffect(size)
+                    .opacity(opacity)
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 1.2)) {
+                            self.size = 0.9
+                            self.opacity = 1.00
+                        }
                     }
                 }
             }
+            
             
             
             .onAppear {
