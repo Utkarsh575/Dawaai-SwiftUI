@@ -64,7 +64,7 @@ struct ContentView : View {
             }
             FamilyLogView().tabItem {                     Label("Family log", systemImage: "person.3")
             }
-            HistoryView().tabItem {                     Label("History", systemImage: "calendar.badge.clock")
+            HistoryView(medicineCards: $TotalMedicines).tabItem {                     Label("History", systemImage: "calendar.badge.clock")
             }
 
         }.accentColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/).toolbarBackground(
